@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block content %}
+
+    <table border="2">
+ 		<thead>
+ 			<th>Name</th>
+ 			<th>Say</th>
+
+
+ 		</thead>
+ 		<tbody>
+        {% for post in posts %}
+ 			<tr>
+				<td>{{ post[0] }}</td>
+				<td>{{ post[1] }}</td>
+			</tr>
+         {% endfor %}
+		</tbody>
+    </table>
+    <h1>Hi, {{ user.nickname }}!</h1>
+    {% for post in posts %}
+    <div><p>{{ post[0] }} says: <b>{{ post[1] }}</b></p></div>
+    {% endfor %}
+    {% if fileImg %}
+    <a class="navbar-brand" href="">
+        <img src="{{ fileImg }}" alt="ĐHQGHN">
+                            </a>
+    {% endif %}
+{% endblock %}

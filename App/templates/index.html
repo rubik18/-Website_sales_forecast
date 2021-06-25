@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html >
+<head >
+	<title>Simple Forecast</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  	<link rel="icon" href="/static/img/favicon.ico" type="image/ico" sizes="16x16">
+  	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+<!--  	<script src='https://kit.fontawesome.com/a076d05399.js'></script>-->
+    <script src="{{ url_for('static',filename='kit.fontawesome.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='font-awesome.min.css') }}">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/adminlte.min.css">
+    <!--  -->
+
+
+</head>
+
+
+<header class="headeri" style="background-color: white">
+    <div class="topheadernav"style="background: linear-gradient(to right, rgba(24,120,175,0) 34%, rgba(24,120,175,1) 45%, rgba(24,119,175,1) 45%, rgba(24,119,175,1) 45%);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="navtop ml-auto">
+                            <nav class="navbar navbar-expand-lg">
+                                <div class="collapse navbar-collapse" id="navabartop">
+                                    <ul class="navbar-nav">
+                                        <li class=""><a href="" target="_blank">.</a></li>
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div class="container" >
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-lg-9">
+
+                                <img src="/static/img/logo.png" alt="ĐHQGHN">
+
+                        </div>
+                        <div class="col-12 col-lg-3 huyhieu" style="padding: 0px; text-align: right">
+                            <img src="/static/img/logomodal.png" alt="ĐHQGHN">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<nav class="navbar navbar-expand-lg navbar-ligh bg-li" >
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/" ><i class='fas fa-house-user' ></i>  &ensp;<span class="sr-only">(current)</span></a>
+
+          </li>
+            <li class="nav-item active">
+            <p class="nav-link" style="margin-bottom: 0px;" >Dự báo doanh số bán thiết bị điện tử &ensp;<span class="sr-only">(current)</span></p>
+
+          </li>
+
+        </ul>
+
+       <p class="nav-link" id="day"> Tiểu luận khoa học - CIS&emsp;</p>
+      </div>
+    </nav>
+</header>
+<body style="width: 100%;background-color: #669cd2 ">
+	<div class="hold-transition sidebar-mini">
+        <div class="row">
+            <div class="col-3" style="background-color: #c8d2dc">
+
+            	<aside class="">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2"  >
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+           <!-- Data Statistics -->
+            <li class="nav-header" ><strong><h5>Thống kê dữ liệu </h5></strong></li>
+
+            <!------------------------->
+          <li class="nav-item has-treeview" >
+            <a href="" class="nav-link" >
+              <i class="nav-icon fas fa-table" style="color: #60458c"></i>
+              <p style="color:black ">
+                Top doanh thu
+                <i class="fas fa-angle-left right" style="color: #60458c"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Cửa hàng
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="{{ url_for('topShop') }}" method="post">
+                          <div class="form-group">
+                              <input type="text" class="form-control" name="qty" placeholder="số lượng">
+                            <input type="text" class="form-control" name="id_shop" placeholder="id Shop">
+                          </div>
+                          <button type="submit" class="btn btn-primary"  >Submit</button>
+                        </form>
+
+                      </div>
+                  </div>
+
+
+              </li>
+                <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Khu vực
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="{{ url_for('topRegion') }}" method="post">
+<!--                          <div class="form-group">-->
+<!--                            <input type="text" class="form-control" name="id_item" aria-describedby="emailHelp" placeholder="id sản phẩm">-->
+<!--                          </div>-->
+                          <div class="form-group">
+                              <input type="text" class="form-control" name="qty" placeholder="số lượng">
+                            <input type="text" class="form-control" name="id_region" placeholder="Thành phố">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                      </div>
+                  </div>
+
+              </li>
+                <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Toàn hệ thống
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action="{{ url_for('topAll') }}" method="post">
+                          <div class="form-group">
+                              <input type="text" class="form-control" name="qty" placeholder="Số lượng">
+
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                      </div>
+                  </div>
+            </ul>
+          </li>
+          <!-- /Data -->
+
+
+
+
+          <li class="nav-header" ><strong><h5>Dự báo </h5></strong></li>
+            <li class="nav-item has-treeview" >
+            <a href="" class="nav-link" >
+              <i class="fas fa-award" style="color: #60458c"></i>
+              <p style="color:black ">
+                &ensp;Một tuần
+
+                <i class="fas fa-angle-left right" style="color: #60458c"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Cửa hàng
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+                        <form action=" {{ url_for('forcast1_shop') }}" method="post">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_item" aria-describedby="emailHelp" placeholder="id sản phẩm">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_shop" placeholder="id Shop">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                      </div>
+                  </div>
+
+              </li>
+                <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Khu vực
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action=" {{ url_for('forcast1_Region') }}" method="post">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_item" aria-describedby="emailHelp" placeholder="id sản phẩm">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_region" placeholder="Thành phố">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                      </div>
+                  </div>
+
+              </li>
+                <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Toàn hệ thống
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                           <label style="padding-left: 10px; padding-right: 10px">Hệ thống đang cập nhật !</label>
+
+                        </form>
+
+                      </div>
+                  </div>
+            </ul>
+          </li>
+            <li class="nav-item has-treeview" >
+            <a href="" class="nav-link" >
+              <i class="fas fa-award" style="color: #60458c"></i>
+              <p style="color:black ">
+                &ensp;Trung bình trượt
+
+                <i class="fas fa-angle-left right" style="color: #60458c"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Cửa hàng
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action=" {{ url_for('forecast2_shop') }}" method="post">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_item" aria-describedby="emailHelp" placeholder="id sản phẩm">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_shop" placeholder="id Shop">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                      </div>
+                  </div>
+
+              </li>
+                <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Khu vực
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form action=" {{ url_for('forecast2_region') }}" method="post">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_item" aria-describedby="emailHelp" placeholder="id sản phẩm">
+                          </div>
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="id_region" placeholder="Thành phố">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                      </div>
+                  </div>
+
+              </li>
+                <li class="nav-item">
+                  <div  class="dropdown show">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: none; background-color: #c8d2dc!important;">
+                        <i class="far fa-circle nav-icon" style="color: #60458c"></i>
+                          Toàn hệ thống
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <label style="padding-left: 10px; padding-right: 10px">Hệ thống đang cập nhật !</label>
+
+
+                      </div>
+                  </div>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+
+            <br>
+            <br>
+            <br>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+
+
+                    <!-- /.sidebar -->
+  </aside>
+
+            </div>
+            <div class="col-9 " id="bg-bl", style="background-color: #cbe5f1">
+
+            <div id="righty">
+                 {% block content %}{% endblock %}
+        	<div >
+
+        &emsp;&emsp;
+
+
+
+
+
+            </div>
+        </div>
+ </div>
+</div></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/adminlte.min.js"></script>
+
+</body>
+<footer class="footer-area">
+
+    <!-- <link rel="stylesheet" type="text/static" href="E:/xampp/htdocs/php-intership-team/static/style-n.static">
+    -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-3 p-20" style="padding-bottom: 15px">
+                    <div class="footer-single-widget">
+
+                            <img style="padding-bottom: 20px;" src="/static/img/logofooter.png">
+                        <img src="/static/img/iconmap.png"  ></img>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 "  >
+                    <h4>Sinh viên K63A3 - CIS</h4>
+                    <p>Phạm Quang Tuấn, 18001193</p>
+                    <p>Hà Vũ Long, 18001154</p>
+                    <p>Đinh Thị Thắm, 18001201</p>
+
+                </div>
+                <div class="col-12 col-md-3">
+                    <h4>Giảng viên hướng dẫn</h4>
+                    <div class="footer-single-widget">
+                    	<p>Thầy Lê Hồng Phương</p>
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-2 ">
+<!--                    <h3>FAQ</h3>-->
+<!--                    <p>Campus Map</p>-->
+<!--					<p>Contact Us</p>-->
+<!--					<p>Library</p>-->
+
+                </div>
+            </div>
+        </div>
+        <div class="copywrite">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 co-md-10" style="padding-top: 7px;padding-bottom: 7px">
+                        <p style="margin-bottom: 0px">Copyright © 2021 HUS_18001201. All Right Reserved. Privacy Policy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</html>

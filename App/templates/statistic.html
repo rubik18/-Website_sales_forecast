@@ -1,0 +1,41 @@
+
+
+{% extends "index.html" %}
+{% block content %}
+<style>
+
+tr:nth-child(even) {
+	background-color: #e3eaef;
+}
+</style>
+<h4 style="color: #d06554">Kết quả</h4>
+    <br>
+    <h5><center>Top {{qty}} sản phẩm đem lại doanh thu cao nhất  {{ type }}</center> </h5>
+    <br>
+<div class="table-responsive">
+    <table border="2">
+ 		<thead style="background-color: #96c5f5">
+			<th>STT</th>
+ 			<th>Mã sản phẩm</th>
+ 			<th>Tên sản phẩm</th>
+ 			<th>Số lượng</th>
+ 			<th>Doanh thu<br>(triệu đồng)</th>
+ 		</thead>
+ 		<tbody>
+		{% for a in list %}
+ 			<tr>
+				<td>{{a[0]}}</td>
+				<td>{{a[1]}}</td>
+				<td>{{a[2]}}</td>
+				<td>{{a[3]}}</td>
+				<td>{{a[4]}}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+ 	</table>
+    </div>
+  <br>
+
+
+
+{% endblock %}
